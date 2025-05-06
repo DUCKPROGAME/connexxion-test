@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Accès Autorisé</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      animation: clignote 1s infinite alternate;
+    }
+
+    @keyframes clignote {
+      from { opacity: 1; }
+      to { opacity: 0.5; }
+    }
+
+    .matrix {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: #00ff00;
+      font-size: 12px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.2;
+      white-space: pre;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix" id="matrix-bg"></div>
+  <h1>✔️ Bravo, test réussi !</h1>
+
+  <script>
+    // Génère un fond de chiffres "matrix"
+    const matrix = document.getElementById("matrix-bg");
+    const lignes = 50;
+    const colonnes = 80;
+    let texte = "";
+
+    for (let i = 0; i < lignes; i++) {
+      for (let j = 0; j < colonnes; j++) {
+        texte += Math.random() > 0.5 ? "1" : "0";
+      }
+      texte += "\n";
+    }
+
+    matrix.textContent = texte;
+
+    // Met à jour en continu pour un effet dynamique
+    setInterval(() => {
+      let texte = "";
+      for (let i = 0; i < lignes; i++) {
+        for (let j = 0; j < colonnes; j++) {
+          texte += Math.random() > 0.5 ? "1" : "0";
+        }
+        texte += "\n";
+      }
+      matrix.textContent = texte;
+    }, 200);
+  </script>
+</body>
+</html>
